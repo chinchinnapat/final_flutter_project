@@ -246,7 +246,7 @@ class _ReservationDetailPageState extends State<ReservationDetailPage> {
                     } catch (e) {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("จองไม่สำเร็จ: $e")),
+                          SnackBar(content: Text("จองไม่สำเร็จ: เวลานี้มีคนจองไปแล้ว ")),
                         );
                       }
                     }

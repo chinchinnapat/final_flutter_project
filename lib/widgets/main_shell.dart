@@ -1,9 +1,12 @@
-import '../pages/home_page.dart';
+import 'package:final_project/pages/homepage.dart';
+
+//import '../pages/home_page.dart';
 import '../pages/my_reservation_page.dart';
 
 import 'package:flutter/material.dart';
 import '../pages/setting_profile_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import '../app_theme.dart';
 
 class MainShell extends StatefulWidget{
   const MainShell({super.key});
@@ -16,7 +19,7 @@ class _MainShellState extends State<MainShell>{
   int selectedIndex = 0;
 
   final pages = const [
-    HomePage(),
+    Homepage(),
     MyReservationPage(),
     SettingProfilePage()
   ];
@@ -30,7 +33,7 @@ class _MainShellState extends State<MainShell>{
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
-          color: Colors.white,
+          color: AppTheme.surface,
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
           child: GNav(
             selectedIndex: selectedIndex,
@@ -40,9 +43,9 @@ class _MainShellState extends State<MainShell>{
               });
             },
             gap: 8,
-            color: const Color(0xFF637067),
-            activeColor: const Color(0xFF426B5A),
-            tabBackgroundColor: const Color(0xFFE4F0E7),
+            color: AppTheme.textDark,
+            activeColor: AppTheme.green,
+            tabBackgroundColor: AppTheme.sage,
             padding: const EdgeInsets.symmetric(
               horizontal: 18,
               vertical: 13,
