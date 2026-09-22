@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239539294357",
+    "project_id": "residentreservation",
+    "storage_bucket": "residentreservation.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239539294357:android:df91a1d01bcf7a57accb9c",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzj5F06ezbc8L9V5t_0ti3W4dkYAE3gIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
