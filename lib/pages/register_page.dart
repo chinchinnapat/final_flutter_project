@@ -104,8 +104,8 @@ class _RegisterPageState extends State<RegisterPage>{
                                 ),
                                 // onChanged: (value) => person.roomNumber = int.tryParse(value ?? ''),
                                 validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(),
-                                  FormBuilderValidators.integer()
+                                  FormBuilderValidators.required(errorText: 'Please Enter Your Room Number'),
+                                  FormBuilderValidators.integer(errorText: 'Please Enter Only Integer')
                                 ]
                                 )
                               ),

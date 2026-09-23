@@ -31,7 +31,6 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>{
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('ส่งการรีเซ็ตรหัสผ่านไปที่อีเมลแล้ว')),
     );
-    Navigator.pop(context);
   } on FirebaseAuthException catch (e) {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
@@ -52,7 +51,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>{
         title: const Text("Reset Password"),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: FormBuilder(
           key: _formKey,
           child: Column(
@@ -64,7 +63,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>{
                   prefixIcon: Icon(Icons.person)
                 ),
                 validator: FormBuilderValidators.required(
-                  errorText: 'กรุณา Username',
+                  errorText: 'กรุณากรอก Username',
                 ),
               ),
               const SizedBox(height: 24,),

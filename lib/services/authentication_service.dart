@@ -30,9 +30,9 @@ class AuthenticationService {
     await _auth.signOut();
   }
 
-  bool isAuthenticated(){
-    return _auth.currentUser != null;
-  }
+  // bool isAuthenticated(){
+  //   return _auth.currentUser != null;
+  // }
 
   static String messageFromCode(String code) {
   switch (code) {

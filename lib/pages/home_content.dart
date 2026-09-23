@@ -17,7 +17,7 @@ class _HomeContentState extends State<HomeContent> {
   static const List<String> _rules = [
     'งดส่งเสียงดังรบกวนผู้อื่น ในช่วงเวลา 22:00 - 06:00 น.',
     'ห้ามสูบบุหรี่และดื่มเครื่องดื่มแอลกอฮอล์ภายในอาคาร',
-    'ห้ามนำสัตว์เลี้ยงทุกชนิดเข้าพักภายในหอพัก',
+    'ห้ามนำสัตว์เลี้ยงทุกชนิดเข้าพักภายใน',
     'กรุณาคืน/จองอุปกรณ์ส่วนกลางตามเวลาที่กำหนด',
     'ช่วยกันดูแลรักษาความสะอาดพื้นที่ส่วนกลาง',
     'ห้ามนำบุคคลภายนอกค้างคืนโดยไม่แจ้งผู้ดูแลหอพัก',
@@ -25,7 +25,7 @@ class _HomeContentState extends State<HomeContent> {
   ];
 
   static const List<Map<String, String>> _contacts = [
-    {'title': 'ผู้ดูแลหอพัก', 'subtitle': '081-234-5678'},
+    {'title': 'ผู้ดูแล', 'subtitle': '081-234-5678'},
     {'title': 'เจ้าหน้าที่รักษาความปลอดภัย (รปภ.)', 'subtitle': '081-234-5679'},
     {'title': 'แม่บ้าน / ทำความสะอาด', 'subtitle': '081-234-5680'},
     {'title': 'เบอร์ฉุกเฉิน (ตำรวจ)', 'subtitle': '191'},
@@ -60,7 +60,7 @@ class _HomeContentState extends State<HomeContent> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'ยินดีต้อนรับสู่หอพัก',
+            'ยินดีต้อนรับ',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 5),
@@ -142,7 +142,7 @@ class _HomeContentState extends State<HomeContent> {
               Icon(Icons.rule, color: AppTheme.green),
               SizedBox(width: 8),
               Text(
-                'กฎระเบียบหอพัก',
+                'กฎระเบียบ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],

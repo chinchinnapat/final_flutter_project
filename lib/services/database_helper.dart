@@ -40,41 +40,41 @@ class DatabaseHelper {
         .toList();
   }
   
-  Stream<List<ResidentFacilityRecordModel>> streamFacilitiesWithStatus(
-    List<ResidentFacilityRecordModel> allFacilities,
-  ){
-    return _reservations
-        .where('status', isEqualTo: 'booked')
-        .snapshots()
-        .map((snapshot){
-          final now = DateTime.now();
+  // Stream<List<ResidentFacilityRecordModel>> streamFacilitiesWithStatus(
+  //   List<ResidentFacilityRecordModel> allFacilities,
+  // ){
+  //   return _reservations
+  //       .where('status', isEqualTo: 'booked')
+  //       .snapshots()
+  //       .map((snapshot){
+  //         final now = DateTime.now();
 
-          final busyFacilityIds = <String>{};
+  //         final busyFacilityIds = <String>{};
 
-          for (final doc in snapshot.docs){
-            final r = ResidentReservationRecordModel.fromJson(doc.data(), id: doc.id);
-            if(r.startTime == null || r.endTime == null) continue;
-            if(r.startTime!.isBefore(now) && r.endTime!.isAfter(now)){
-              busyFacilityIds.add(r.facilityId ?? '');
-            }
-          }
+  //         for (final doc in snapshot.docs){
+  //           final r = ResidentReservationRecordModel.fromJson(doc.data(), id: doc.id);
+  //           if(r.startTime == null || r.endTime == null) continue;
+  //           if(r.startTime!.isBefore(now) && r.endTime!.isAfter(now)){
+  //             busyFacilityIds.add(r.facilityId ?? '');
+  //           }
+  //         }
 
-          return allFacilities.map((f){
-            final isBusy = busyFacilityIds.contains(f.id);
+  //         return allFacilities.map((f){
+  //           final isBusy = busyFacilityIds.contains(f.id);
             
-            return ResidentFacilityRecordModel(
-              id: f.id,
-              name: f.name,
-              category: f.category,
-              description: f.description,
-              capacity: f.capacity,
-              openHour: f.openHour,
-              closeHour: f.closeHour,
-              imagesAsset: f.imagesAsset,  
-            )..isAvailable = !isBusy;
-          }).toList();
-        });
-  }
+  //           return ResidentFacilityRecordModel(
+  //             id: f.id,
+  //             name: f.name,
+  //             category: f.category,
+  //             description: f.description,
+  //             capacity: f.capacity,
+  //             openHour: f.openHour,
+  //             closeHour: f.closeHour,
+  //             imagesAsset: f.imagesAsset,  
+  //           )..isAvailable = !isBusy;
+  //         }).toList();
+  //       });
+  // }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> streamMyReservations(String uid){
     return _reservations
@@ -88,7 +88,6 @@ class DatabaseHelper {
       reservation.facilityId!,
       reservation.startTime!,
     );
-
     final ref = _reservations.doc(slotId);
 
     await _db.runTransaction((tx) async {
@@ -105,41 +104,41 @@ class DatabaseHelper {
     return _reservations.doc(reservationId).update({'status': 'cancelled'});
   }
 
-  Future<void> rescheduleReservation({
-    required ResidentReservationRecordModel oldReservation,
-    required DateTime newStart,
-    required DateTime newEnd,
-  }) async {
-    final newSlotId = ResidentReservationRecordModel.slotId(
-      oldReservation.facilityId!,
-      newStart,
-    );
+  // Future<void> rescheduleReservation({
+  //   required ResidentReservationRecordModel oldReservation,
+  //   required DateTime newStart,
+  //   required DateTime newEnd,
+  // }) async {
+  //   final newSlotId = ResidentReservationRecordModel.slotId(
+  //     oldReservation.facilityId!,
+  //     newStart,
+  //   );
     
-    final newRef = _reservations.doc(newSlotId);
-    final oldRef = _reservations.doc(oldReservation.id);
+  //   final newRef = _reservations.doc(newSlotId);
+  //   final oldRef = _reservations.doc(oldReservation.id);
 
-    await _db.runTransaction((tx) async {
-      final newSnap = await tx.get(newRef);
-      if(newSnap.exists && newSnap.data()?['status'] == 'booked'){
-        throw Exception('ช่วงเวลาใหม่นี้ถูกจองแล้ว');
-      }
+  //   await _db.runTransaction((tx) async {
+  //     final newSnap = await tx.get(newRef);
+  //     if(newSnap.exists && newSnap.data()?['status'] == 'booked'){
+  //       throw Exception('ช่วงเวลาใหม่นี้ถูกจองแล้ว');
+  //     }
 
-      tx.update(oldRef, {'status': 'cancelled'});
+  //     tx.update(oldRef, {'status': 'cancelled'});
 
-      final newReservation = ResidentReservationRecordModel(
-        id: newSlotId,
-        uid: oldReservation.uid,
-        facilityId: oldReservation.facilityId,
-        startTime: newStart,
-        endTime: newEnd,
-        residentName: oldReservation.residentName,
-        roomNumber: oldReservation.roomNumber,
-        confirmationCode: oldReservation.confirmationCode,
-        status: 'booked',
-      );
-      tx.set(newRef, newReservation.toJson());
-    });
-  }
+  //     final newReservation = ResidentReservationRecordModel(
+  //       id: newSlotId,
+  //       uid: oldReservation.uid,
+  //       facilityId: oldReservation.facilityId,
+  //       startTime: newStart,
+  //       endTime: newEnd,
+  //       residentName: oldReservation.residentName,
+  //       roomNumber: oldReservation.roomNumber,
+  //       confirmationCode: oldReservation.confirmationCode,
+  //       status: 'booked',
+  //     );
+  //     tx.set(newRef, newReservation.toJson());
+  //   });
+  // }
 
   String generateConfirmationCode(){
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

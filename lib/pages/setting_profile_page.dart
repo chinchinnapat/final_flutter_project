@@ -145,9 +145,9 @@ class _SettingProfilePageState extends State<SettingProfilePage> {
                           context: context,
                           builder: (dialogContext) {
                             return AlertDialog(
-                              title: const Text("ยันยันการยกเลิก"),
+                              title: const Text("ยันยันการลงชื่อออก"),
                               content: const Text(
-                                "คุณต้องการยกเลิกรายการจองนี้ใช่มั้ย",
+                                "คุณต้องการลงชื่อออกใช่มั้ย",
                               ),
                               actions: [
                                 TextButton(

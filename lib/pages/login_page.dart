@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: RadialGradient(
-            center: Alignment.topCenter,
+            center: Alignment.center,
             radius: 1.4,
             colors: [AppTheme.background, AppTheme.sage],
           ),
@@ -93,8 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     onPressed: () {
                                       setState(
-                                        () => _obscurePassword =
-                                            !_obscurePassword,
+                                        () => _obscurePassword = !_obscurePassword,
                                       );
                                     },
                                   ),
@@ -158,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                                     builder: (_) => const ResetPasswordPage(),
                                   ),
                                 ),
-                                child: const Text("ลืมรหัสผ่าน"),
+                                child: const Text("Forget Password"),
                               ),
                               SizedBox(height: 10),
                               TextButton(
@@ -171,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                                     builder: (_) => const RegisterPage(),
                                   ),
                                 ),
-                                child: const Text("สมัครสมาชิก"),
+                                child: const Text("Register"),
                               ),
                             ],
                           ),
