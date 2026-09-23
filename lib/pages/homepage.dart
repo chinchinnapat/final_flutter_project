@@ -11,9 +11,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _pages = [const HomeContent()];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,7 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
 
-      body: _pages[_selectedIndex],
+      body: HomeContent(),
     );
   }
 }
